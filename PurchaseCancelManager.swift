@@ -8,7 +8,7 @@ class PurchaseCancelManager {
             return purchase
         }
         let newPurchaseHistory = PurchaseHistory(purchaseState: .cancelled, 
-																					       deliveryState: purchase.deliveryState)
-			  return newPurchaseHistory
+						 deliveryState: purchase.deliveryState)
+	return newPurchaseHistory
     }
 }
