@@ -9,7 +9,7 @@ class RefundManager {
         }
         purchase.paymentMethod.processRefund(amount: amount)
         let newPurchaseHistory = PurchaseHistory(purchaseState: .refunded, 
-						                         deliveryState: purchase.deliveryState)
-	    return newPurchaseHistory
+					         deliveryState: purchase.deliveryState)
+  	return newPurchaseHistory
     }
 }
