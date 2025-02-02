@@ -3,12 +3,10 @@ class PurchaseCancelManager {
     
     private init() {}
     
-    func cancelPurchase(_ purchase: PurchaseHistory, with policy: PurchaseCancelPolicy) -> PurchaseHistory {
+    func cancelPurchase(_ purchase: PurchaseHistory, with policy: PurchaseCancelPolicy) -> Bool {
         guard policy.isCancelAvailable(purchase) else {
-            return purchase
+            return false
         }
-        let newPurchaseHistory = PurchaseHistory(purchaseState: .cancelled, 
-						 deliveryState: purchase.deliveryState)
-	return newPurchaseHistory
+	return true
     }
 }
