@@ -3,11 +3,13 @@ class RefundManager {
     
     private init() {}
     
-    func refundPurchase(_ purchase: PurchaseHistory, amount: Double) {
+    func refundPurchase(_ purchase: PurchaseHistory, amount: Double) -> PurchaseHistory? {
         guard purchase.purchaseState == .completed || purchase.purchaseState == .cancelled else {
-            return
+            return nil
         }
-        purchase.purchaseState = .refunded
         purchase.paymentMethod.processRefund(amount: amount)
+        let newPurchaseHistory = PurchaseHistory(purchaseState: .refunded, 
+						                         deliveryState: purchase.deliveryState)
+	    return newPurchaseHistory
     }
 }
