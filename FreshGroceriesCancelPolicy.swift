@@ -1,13 +1,14 @@
 class FreshGroceriesCancelPolicy: PurchaseCancelPolicy {
+    var cancelAvailablePurchaseStates: [PurchaseState] {
+        return [.pending, .completed]
+    }
+    
+    var cancelAvailableDeliveryStates: [DeliveryState] {
+        return [.preparing]
+    }
+    
     func isCancelAvailable(_ purchase: PurchaseHistory) -> Bool {
-        if !purchase.purchaseState.isCancelAvailable(by: self) {
-            return false
-        }
-        
-        if !purchase.deliveryState.isCancelAvailable(by: self) {
-            return false
-        }
-        
-        return true
+        return cancelAvailablePurchaseStates.contains(purchase.purchaseState) &&
+               cancelAvailableDeliveryStates.contains(purchase.deliveryState)
     }
 }
