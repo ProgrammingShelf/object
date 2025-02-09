@@ -24,8 +24,4 @@ class OrderItem(
         this.status = status
     }
 
-//    fun caculateReturnPrice() : Double {
-//        return if(product.canCancel()) caculatePrice() else 0.0
-//    }
-
 }

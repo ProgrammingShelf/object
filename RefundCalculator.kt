@@ -1,4 +1,10 @@
-class RefundCalculator() {
+class RefundCalculator(
+    var cancellationFee: Double
+) {
+
+    fun setCancellationFee(fee: Double) {
+        this.cancellationFee = fee
+    }
 
     fun calculateRefund(order: Order): Double {
         var totalRefund = 0.0
@@ -11,9 +17,8 @@ class RefundCalculator() {
     }
 
     fun calculateRefundForItem(orderItem: OrderItem): Double {
-        val cancellationFee = 5.0
-        val refundAmount = item.calculatePrice() - cancellationFee;
-        return if(refundAmount > 0) refundAmount else 0
+        val refundAmount = orderItem.calculatePrice() - cancellationFee
+        return if(refundAmount > 0) refundAmount else 0.0
     }
 
 }
