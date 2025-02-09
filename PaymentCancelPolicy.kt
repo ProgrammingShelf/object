@@ -5,15 +5,11 @@ enum class PaymentType(val type: Int){
 }
 
 class PaymentCancelPolicy (
-    var type: Int
+    var paymentType: PaymentType
 ): CancelPolicy {
 
-    fun setCancelPolicy(type: Int){
-        this.type = type
-    }
-
     override fun isCancelEnable(): Boolean {
-        return if(type == PaymentType.Point.type) false
+        return if(paymentType == PaymentType.Point) false
         else true
     }
 

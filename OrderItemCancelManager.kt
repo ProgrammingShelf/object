@@ -1,7 +1,11 @@
 class OrderItemCancelManager {
 
-    fun cancelOrder(orderItem: OrderItem) {
-        if(orderItem.canCancel()) orderItem.status = OrderStatus.Canceled.type
+    fun cancelOrder(order: Order) {
+        for(orderItem in order.orderItemList) {
+            if(orderItem.canCancel()) {
+                orderItem.setStatus(OrderStatus.Canceled)
+            }
+        }
     }
 
 }

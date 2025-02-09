@@ -1,14 +1,14 @@
 
 class StatusCancelPolicy (
-    var type: Int
+    var orderStatus: OrderStatus
 ): CancelPolicy {
 
-    fun setCancelPolicy(type: Int){
-        this.type = type
+    fun setCancelPolicy(orderStatus: OrderStatus){
+        this.orderStatus = orderStatus
     }
 
     override fun isCancelEnable(): Boolean {
-        return if(type == OrderStatus.Preparing.type) false
+        return if(orderStatus == OrderStatus.Preparing) false
         else true
     }
 

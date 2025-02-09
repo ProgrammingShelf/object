@@ -14,10 +14,4 @@ class Order(
         return orderItemList
     }
 
-    private fun cancelOrder() {
-        for(order in orderItemList){
-            order.cancel()
-        }
-    }
-
 }

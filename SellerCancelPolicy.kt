@@ -4,15 +4,15 @@ enum class SellerType(val type: Int){
 }
 
 class SellerCancelPolicy(
-    var type: Int
+    var sellerType: SellerType
 ): CancelPolicy {
 
-    fun setCancelPolicy(type: Int){
-        this.type = type
+    fun setCancelPolicy(sellerType: SellerType){
+        this.sellerType = sellerType
     }
 
     override fun isCancelEnable(): Boolean {
-        return if(type == SellerType.CancelDisable.type) false
+        return if(sellerType == SellerType.CancelDisable) false
         else true
     }
 }
