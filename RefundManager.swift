@@ -7,7 +7,11 @@ class RefundManager {
         guard purchase.purchaseState == .completed || purchase.purchaseState == .cancelled else {
             return false
         }
-        purchase.paymentMethod.processRefund(amount: amount)
+
+	for paymentTransaction in purchase.paymentTransactionList {
+	    paymentTransaction.processRefund(amount: amount)
+	}
+	    
 	return true
     }
 }
