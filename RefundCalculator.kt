@@ -2,6 +2,12 @@ class RefundCalculator(
     var cancellationFee: Double
 ) {
 
+    fun refundPurchase(purchase: PurchaseHistory, amount: Double) : Boolean {
+        if(purchase.purchaseState != PurchaseState.Copmpleted && purchase.purchaseState != PurchaseState.Cancelled) return false
+        purchase.paymentMethod.processRefund(amount)
+        return true
+    }
+
     fun setCancellationFee(fee: Double) {
         this.cancellationFee = fee
     }

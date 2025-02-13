@@ -1,4 +1,4 @@
-class OrderItem(
+data class OrderItem(
     private val uid: String,
     private var product: Product,
     private var status: OrderStatus,

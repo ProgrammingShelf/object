@@ -4,19 +4,21 @@ class Product(
     var price: Double,
     private var description: String,
     private var imageURL: String,
-    var cancelPolicy: CancelPolicy,
+    var cancelPolicies: List<SellerCancelPolicy>,
 ) {
 
-    fun setProduct(name: String, price: Double, description: String, image: String, cancelPolicy: CancelPolicy) {
+    fun setProduct(name: String, price: Double, description: String, image: String, cancelPolicies: List<SellerCancelPolicy>) {
         this.name = name
         this.price = price
         this.description = description
         this.imageURL = image
-        this.cancelPolicy = cancelPolicy
+        this.cancelPolicies = cancelPolicies
     }
 
     fun canCancel(): Boolean {
-        return cancelPolicy.isCancelEnable()
+        return cancelPolicies.any {
+            it.isCancelEnable()
+        }
     }
 
     fun getPrice(): Double {
