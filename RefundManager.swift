@@ -3,15 +3,18 @@ class RefundManager {
     
     private init() {}
     
-    func refundPurchase(_ purchase: PurchaseHistory, amount: Double) -> Bool {
+    func refundPurchase(_ purchase: PurchaseHistory, amount: Double) -> [(Bool, String)] {
         guard purchase.purchaseState == .completed || purchase.purchaseState == .cancelled else {
-            return false
+            return purchase.paymentTransactionList.map({ (false, $0.uid) }) 
         }
 
+	var resultList: [(Bool, String)] = []
+
 	for paymentTransaction in purchase.paymentTransactionList {
-	    paymentTransaction.processRefund(amount: amount)
+	    let result = paymentTransaction.processRefund(amount: amount)
+	    resultList.append((result, paymentTransaction.uid))
 	}
 	    
-	return true
+	return resultList
     }
 }
