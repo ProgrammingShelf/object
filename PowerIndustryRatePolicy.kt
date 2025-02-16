@@ -4,6 +4,6 @@ class PowerIndustryRatePolicy(private val ratePolicies: List<RatePolicy>) : Addi
     }
 
     companion object {
-        const val VALUE_ADDED_TAX_RATE = 0.37
+        const val VALUE_ADDED_TAX_RATE = 0.037
     }
 }

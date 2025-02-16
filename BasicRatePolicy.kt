@@ -1,4 +1,4 @@
-abstract class BasicRatePolicy: RatePolicy {
+class BasicRatePolicy: RatePolicy {
 
     override fun calculateFee(electricity: Electricity): Double {
         val result = if(electricity.usage < Electricity.MINIMUM_USAGE) {
@@ -12,7 +12,5 @@ abstract class BasicRatePolicy: RatePolicy {
         }
         return result
     }
-
-    protected abstract fun calculateElectricityChargePolicy(electricity: Electricity): Double
 
 }

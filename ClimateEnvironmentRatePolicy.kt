@@ -1,5 +1,5 @@
-class ClimateEnvironmentRatePolicy: BasicRatePolicy() {
-    override fun calculateElectricityChargePolicy(electricity: Electricity): Double {
+class ClimateEnvironmentRatePolicy: RatePolicy {
+    override fun calculateFee(electricity: Electricity): Double {
         return electricity.usage * ENVIRONMENT_FEE
     }
 
